@@ -1,0 +1,47 @@
+{% extends 'admin/a_index.html' %}
+{% block body %}
+
+<body>
+<form id="form1" name="form1" method="post" action="/ViewFeedback_post">
+  <table class="table table-bordered table-hover table-stripped">
+    <tr>
+      <th>From Date</th>
+      <td>
+      <input type="date" name="textfield" id="textfield"class="form-control" /></td>
+      <th>ToDate</th>
+      <td>
+      <input type="date" name="textfield2" id="textfield2"class="form-control "/></td>
+      <td><input type="submit" name="button" id="button" value="Search"class="btn btn-info" /></td>
+    </tr>
+  </table>
+  <p>&nbsp;</p>
+  <table class="table table-bordered table-hover table-stripped">
+      <tr style="color: white;background: #00670f">
+
+      <th>S.No</th>
+      <th>Date</th>
+      <th>Time</th>
+      
+      <th>Feedback</th>
+      <th>User Info</th>
+    
+    </tr>
+      {% for i in data %}
+    <tr>
+      <td>{{ loop.index }}</td>
+      <td>{{ i['f_date'] }}</td>
+      <td>{{ i['f_time'] }}</td>
+    
+      <td>{{ i['f_description'] }}</td>
+      <td>{{ i['u_name'] }}<br>
+      {{ i['u_phone'] }}<br>
+      {{ i['u_email'] }}<br>
+      {{ i['u_place'] }}<br></td>
+     
+    </tr>
+      {% endfor %}
+  </table>
+  <p>&nbsp;</p>
+</form>
+</body>
+{% endblock %}

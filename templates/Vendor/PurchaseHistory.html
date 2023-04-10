@@ -1,0 +1,29 @@
+{% extends 'vendor/v_index.html' %}
+{% block body %}
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+  <table class="table table-bordered table-hover table-stripped">
+      <tr style="color: white;background: #00670f">
+
+      <th>S.No</th>
+      <th>Date</th>
+      <th>Time</th>
+      <th>User Name</th>
+      <th>Total Amount</th>
+      <th>&nbsp;</th>
+    </tr>
+      {% for i in data %}
+    <tr>
+      <td>{{ loop.index }}</td>
+      <td>{{ i['date'] }}</td>
+      <td>{{ i['time'] }}</td>
+      <td>{{ i['u_lid'] }}</td>
+      <td>{{ i['total_amount'] }}</td>
+      <td><a href="/PurchaseHistoryMoreDetails/{{ i['om_id'] }}#about" class="btn btn-info">More</a></td>
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+</body>
+{% endblock %}

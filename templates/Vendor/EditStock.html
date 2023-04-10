@@ -1,0 +1,28 @@
+{% extends 'vendor/v_index.html' %}
+{% block body %}
+
+<body>
+<form id="form1" name="form1" method="post" action="/EditStock_post">
+  <table class="table table-bordered table-hover table-stripped">
+    <tr><input type="hidden" name="id" value="{{ data1['s_id'] }}">
+      <th>Product Name</th>
+      <td><select name="select">
+          {%  for i in data %}
+        <option value="{{ i['p_id'] }}" {% if i['p_id']==data['p_id'] %} selected {% endif %}>{{ i['p_name'] }}</option>
+
+          {% endfor %}
+      </select></td>
+    </tr>
+    <tr>
+      <th>Quantity</th>
+      <td>
+      <input type="text" name="textfield" id="textfield" class="form-control"/></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><input type="submit" name="button" id="button" value="Submit" class="btn btn-success" /></td>
+    </tr>
+  </table>
+</form>
+</body>
+{% endblock %}

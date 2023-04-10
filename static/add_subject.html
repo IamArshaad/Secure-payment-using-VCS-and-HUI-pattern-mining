@@ -1,0 +1,99 @@
+{% extends "temp-admin.html" %} {% block body %}
+<body>
+<p></p>
+<h1 align="center">ADD SUBJECT</h1>
+<p></p>
+<p></p>
+<form id="form1" name="form1" method="post" action="/addsubject">
+  <table width="359" border="1" align="center" class="table table-bordered table-striped table-condensed">
+    <tr>
+      <td width="161" height="55">Course</td>
+      <td width="163">
+      <select name="crs" id="crs">
+        <option value="select">Select</option>
+             {% for ii in crs1 %}
+            <option value="{{ ii[0] }}">{{ ii[1] }}</option>
+
+          {% endfor %}
+        </select></td>
+    </tr>
+    <tr>
+      <td height="53">Batch</td>
+      <td><label for="select3"></label>
+        <select name="bat" id="bat">
+
+        </select></td>
+    </tr>
+    <tr>
+      <td height="52">Semester</td>
+      <td>
+        <select name="select4" id="select4">
+<option value="select">Select</option>
+             <option value="S1">S1</option>
+             <option value="S2">S2</option>
+
+             <option value="S3">S3</option>
+             <option value="S4">S4</option>
+             <option value="S5">S5</option>
+            <option value="S6">S6</option>
+             <option value="S7">S7</option>
+             <option value="S8">S8</option>
+            <option value="S7">S9</option>
+             <option value="S8">S10</option>
+
+        </select></td>
+    </tr>
+    <tr>
+      <td height="58">Subject Code</td>
+      <td><label for="textfield"></label>
+        <input type="text" name="textfield2" id="textfield" required /></td>
+    </tr>
+
+  <tr>
+      <td height="59">Subject Name</td>
+      <td><label for="textfield"></label>
+        <input type="text" name="textfield3" id="textfield" required/></td>
+    </tr>
+    <tr>
+      <td height="71" colspan="2"><div align="center">
+        <input type="submit" name="button2" id="button2" value="Add" />
+      </div></td>
+    </tr>
+  </table>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+</form>
+<p></p>
+<script src="/static/jquery.js"></script>
+<script >
+    $(document).ready(function () {
+
+        $(document).on('change','#crs',function () {
+
+            var ii=$(this).val();
+
+$("#bat").text("")
+            $.getJSON("/changevalue",{
+                 id:ii
+                },function (data) {
+
+
+                var k=data.length;
+$("#bat").append("<option value=select>select</option>")
+                for(i=0;i<k;i++)
+                {
+                    var id=data[i]["batchid"];
+                    var name=data[i]["batch"];
+$("#bat").append("<option value="+id+">"+name+"</option>")
+                }
+                });
+
+        });
+    });
+
+
+</script>
+<p></p>
+</body>
+{% endblock %}

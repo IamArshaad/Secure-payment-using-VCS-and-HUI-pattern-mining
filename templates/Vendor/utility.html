@@ -1,0 +1,104 @@
+{% extends 'vendor/v_index.html' %}
+{% block body %}
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+  <table class="table table-bordered table-hover table-stripped">
+    <tr>
+      <th>S.No</th>
+      <th>Transaction ID</th>
+      <th>Transaction</th>
+        <th>Products</th>
+      <th>Quantity</th>
+    </tr>
+      {% for i in t1 %}
+    <tr>
+      <td>&nbsp;{{ loop.index }}</td>
+      <td>&nbsp;{{ i["t1"] }}</td>
+      <td>{{ i["trans"] }}&nbsp;</td>
+        <td>{{ i["pname"] }}</td>
+      <td>&nbsp;{{ i["myq1"] }}</td>
+    </tr>
+      {% endfor %}
+  </table>
+  <p>&nbsp;</p>
+  <table class="table table-bordered table-hover table-stripped">
+    <tr>
+      <th>S.No</th>
+      <th>Transaction ID</th>
+      <th>Transaction Utility</th>
+    </tr>
+       {% for i in t2 %}
+    <tr>
+      <td>{{ i["t1"] }}&nbsp;</td>
+      <td>&nbsp;{{ i["trans"] }}</td>
+      <td>&nbsp;{{ i["tu"] }}</td>
+    </tr>
+      {% endfor %}
+  </table>
+  <p>&nbsp;</p>
+  <table class="table table-bordered table-hover table-stripped">
+    <tr>
+      <th>S.No</th>
+      <th>Item ID</th>
+      <th>Transaction Weighted Utility</th>
+    </tr>
+      {% for i in t3 %}
+    <tr>
+      <td>{{ loop.index }}&nbsp;</td>
+      <td>&nbsp;{{ i["pid"] }}</td>
+      <td>&nbsp;{{ i["tq"] }}</td>
+    </tr>
+      {% endfor %}
+  </table>
+  <p>&nbsp;</p>
+ <p>&nbsp;Sorted TW</p>
+  <table class="table table-bordered table-hover table-stripped">
+    <tr>
+      <th>S.No</th>
+      <th>Item ID</th>
+      <th>Transaction Weighted Utility</th>
+    </tr>
+      {% for i in t4 %}
+    <tr>
+      <td>{{ loop.index }}&nbsp;</td>
+      <td>&nbsp;{{ i["pid"] }}</td>
+      <td>&nbsp;{{ i["tq"] }}</td>
+    </tr>
+      {% endfor %}
+  </table>
+  <p>&nbsp;</p>
+ <table class="table table-bordered table-hover table-stripped">
+    <tr>
+      <th>S.No</th>
+      <th>Transaction ID</th>
+      <th>Transaction</th>
+        <th>Products</th>
+      <th>Quantity</th>
+    </tr>
+      {% for i in t5 %}
+    <tr>
+      <td>&nbsp;{{ loop.index }}</td>
+      <td>&nbsp;{{ i["t1"] }}</td>
+      <td>{{ i["trans"] }}&nbsp;</td>
+        <td>{{ i["pname"] }}</td>
+      <td>&nbsp;{{ i["myq1"] }}</td>
+    </tr>
+      {% endfor %}
+  </table>
+<table class="table table-bordered table-hover table-stripped">
+<tr>
+    <th>Path</th>
+    <th>Utility</th>
+</tr>
+    {% for i in s %}
+<tr>
+    <td>{{ i["path"] }}</td>
+    <td>{{ i["score"] }}</td>
+</tr>
+    {% endfor %}
+ </table>
+  <p>&nbsp;</p>
+</form>
+</body>
+{% endblock %}

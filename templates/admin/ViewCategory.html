@@ -1,0 +1,24 @@
+{% extends 'admin/a_index.html' %}
+{% block body %}
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+  <table class="table table-bordered table-hover table-stripped">
+    <tr style="color: white;background: #00670f">
+      <th>S.No</th>
+      <th>Category Name</th>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+      {% for i in data %}
+    <tr>
+      <td>{{ loop.index }}</td>
+      <td>{{ i['c_name'] }}</td>
+      <td><a href="/EditCategory/{{ i['c_id'] }}"class="btn btn-success">Edit</a></td>
+      <td><a href="/delete_category/{{ i['c_id'] }}" onclick="return confirm('Do you want to delete?')"class="btn btn-danger">Delete</a></td>
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+</body>
+{% endblock %}

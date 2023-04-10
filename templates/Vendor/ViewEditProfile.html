@@ -1,0 +1,40 @@
+{% extends 'vendor/v_index.html' %}
+{% block body %}
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+  <table class="table table-bordered table-hover table-stripped">
+      <tr>
+
+      <th>Name</th>
+      <td>
+    <input type="text" name="textfield" readonly id="textfield"class="form-control" required  value="{{ data['v_name'] }}" /></td>
+    </tr>
+    <tr>
+      <th>Address</th>
+      <td>
+    <input type="text" name="textfield" readonly id="textfield"class="form-control" required  value="{{ data['v_place'] }},{{ data['v_post'] }},{{ data['v_district'] }},{{ data['v_state'] }},{{ data['v_pin'] }}" /></td>
+    </tr>
+    <tr>
+      <th>Email</th>
+      <td>
+    <input type="text" name="textfield" readonly id="textfield"class="form-control" required  value="{{ data['v_email'] }}"/></td>
+    </tr>
+    <tr>
+      <th>Phone</th>
+      <td>
+    <input type="text" name="textfield" readonly id="textfield" class="form-control" required  value="{{ data['v_phone'] }}"/></td>
+    </tr>
+    <tr>
+      <th>OwnerName</th>
+      <td>
+    <input type="text" name="textfield" readonly id="textfield"class="form-control" required value="{{ data['v_ownername'] }}"/></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+        <td><a href="/EditProfile#about"class="btn btn-success">Edit </a></td>
+    </tr>
+  </table>
+</form>
+</body>
+{% endblock %}

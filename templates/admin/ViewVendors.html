@@ -1,0 +1,47 @@
+{% extends 'admin/a_index.html' %}
+{% block body %}
+
+<body>
+<form id="form1" name="form1" method="post" action="/ViewVendors_post">
+  <table class="table table-bordered table-hover table-stripped">
+    <tr>
+      <td>
+      <input type="text" name="textfield" id="textfield" class="form-control" /></td>
+      <td><input type="submit" name="button" id="button" value="Search" class="btn btn-info"/></td>
+    </tr>
+  </table>
+  <p>&nbsp;</p>
+  <table class="table table-bordered table-hover table-stripped">
+    <tr style="color: white;background: #00670f">
+
+      <th width="40">S.No</th>
+      <th width="32">Name</th>
+      <th width="66">Address</th>
+      <th width="81">Owner Name</th>
+      <th width="73">Email</th>
+      <th width="57">Phone</th>
+      <th width="76">Approve</th>
+      <th width="64">Reject</th>
+    </tr>
+      {% for i in data %}
+    <tr>
+      <td>{{ loop.index }}</td>
+      <td>{{ i['v_name'] }}</td>
+      <td>{{ i['v_place'] }}<br>
+    {{ i['v_post'] }}<br>
+    {{ i['v_district'] }}<br>
+    {{ i['v_state'] }}<br>
+    {{ i['v_pin'] }}<br></td>
+      <td>{{ i['v_ownername'] }}</td>
+      <td>{{ i['v_email'] }}</td>
+      <td>{{ i['v_phone'] }}</td>
+      <td><a href="/approve_vendors/{{ i['v_id'] }}"class="btn btn-success">Approve</a></td>
+      <td><a href="/reject_vendors/{{ i['v_id'] }}"class="btn btn-danger">Reject</a></td>
+    </tr>
+      {% endfor %}
+  </table>
+  <p>&nbsp;</p>
+</form>
+<p>&nbsp;</p>
+</body>
+{% endblock %}

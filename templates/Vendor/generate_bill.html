@@ -1,0 +1,174 @@
+{% extends 'vendor/v_index.html' %}
+{% block body %}
+
+
+
+
+<body>
+<script src="/static/jqueryy.js"></script>
+<form id="form1" name="form1" method="post" action="/generate_bill_post">
+
+  <p>&nbsp;</p>
+  <table class="table table-bordered table-hover table-stripped">
+    <tr>
+      <td>Category</td>
+      <td>
+        <select name="select2" id="select2" class="form-control">
+        <option value="">Choose an Option</option>
+            {% for i in data2 %}
+        <option value="{{ i['c_id'] }}">{{ i['c_name'] }}</option>
+
+        {% endfor %}
+      </select></td>
+    </tr>
+    <tr>
+      <td>Product</td>
+      <td>
+        <select name="select3" id="select3" required class="form-control">
+           <option value="">Choose an Option</option>
+                      {% for i in data3 %}
+              <option value="{{ i['p_id'] }}" id="p_id">{{ i['p_name'] }}</option>
+            {% endfor %}
+
+      </select></td>
+    </tr>
+    <tr>
+      <td>Quantity</td>
+      <td>
+      <input type="text" name="textfield" id="textfield" class="form-control" required/></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><input type="submit" name="button" id="button" value="Add" class="btn btn-success" /></td>
+    </tr>
+
+  </table>
+  <p>&nbsp;</p>
+  <table class="table table-bordered table-hover table-stripped">
+    <tr>
+      <td>S.No</td>
+      <td>Product Name</td>
+      <td>Price</td>
+      <td>Quantity</td>
+      <td>&nbsp;</td>
+    </tr>
+      {% for i in data4  %}
+
+
+    <tr>
+      <td>&nbsp;{{ loop.index }}</td>
+      <td>&nbsp;{{ i['p_name'] }}</td>
+      <td>&nbsp;{{ i['p_price'] }}</td>
+      <td>&nbsp;{{ i['quantity'] }}</td>
+      <td><a href="/delete_bill/{{ i['os_id'] }}" class="btn btn-danger">Delete</a></td>
+    </tr>
+       {% endfor %}
+  </table>
+  <p>&nbsp;</p>
+</form>
+<form method="post" action="/update_order_main">
+
+  <table class="table table-bordered table-hover table-stripped">
+    <tr>
+      <td>Total Amount</td>
+      <td>{{ session['tot'] }}</td>
+    </tr>
+
+
+    <tr>
+      <td>Customer</td>
+      <td>
+        <select name="select" id="select" class="form-control">
+            {% for i in data %}
+        <option value="{{ i['u_lid'] }}">{{ i['u_name'] }}</option>
+
+        {% endfor %}
+      </select></td>
+    </tr>
+  </table>
+
+
+  <p>
+    <td><input type="submit" name="button" id="button" value="Next" class="btn btn-success" /></td>
+  </p>
+
+
+
+</form>
+
+
+</body>
+
+
+    <script type="text/javascript"
+            src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js">
+    </script>
+<script  type="text/javascript" >
+
+  $(document).on('change','#select2',function () {
+
+      var cid = $('#select2').find(":selected").val();
+
+
+
+
+            $.ajax({
+            url: "/getproduct",
+            type: "POST",
+            data: {
+
+                'cid':cid
+
+
+
+            },
+            dataType: "json",
+            success: function(dat) {
+
+                $("#select3").empty();
+                var d=dat['data'];
+                $("#select3").append("<option value=''>Choose an Option</option>")
+                for(var i=0;i<=d.length;i++)
+                {
+                    $("#select3").append("<option value='"+d[i]['p_id']+"'>"+d[i]['p_name']+"</option>")
+                }
+
+            },
+            error: function(ts) {
+
+                alert('no');
+
+            },
+            complete:function (ts) {
+
+            }
+        });
+
+
+
+  });
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

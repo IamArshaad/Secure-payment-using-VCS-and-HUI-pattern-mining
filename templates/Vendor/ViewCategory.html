@@ -1,0 +1,21 @@
+{% extends 'vendor/v_index.html' %}
+{% block body %}
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+  <table class="table table-bordered table-hover table-stripped">
+      <tr style="color: white;background: #00670f">
+
+      <th>S.No</th>
+      <th>Category Name</th>
+    </tr>
+      {% for i in data %}
+    <tr>
+      <td>{{ loop.index }}</td>
+      <td>{{ i['c_name'] }}</td>
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+</body>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'vendor/v_index.html' %}
+{% block body %}
+<table>
+    <tr>
+        <td>
+<img src="/static/qr/a.jpg" width="500px" height="500px">
+</td>
+                <td>
+<img src="/static/qr/share_1/1.png" width="200px" height="200px">
+</td>
+                        <td>
+<img src="/static/qr/share_2/2.png" width="200px" height="200px">
+</td>
+    </tr>
+
+ <tr>
+     <td>
+            <a href="/create_second">Create Second Share</a>
+     </td>
+     <td>
+
+     </td>
+     <td>
+
+     </td>
+ </tr>
+    {% if x == 1 %}
+    <tr>
+        <td>
+
+        </td>
+                    <td>
+<img src="/static/qr/sharea.jpg" width="200px" height="200px">
+</td>
+    </tr>
+{% endif %}
+</table>
+
+
+
+</body>
+{% endblock %}

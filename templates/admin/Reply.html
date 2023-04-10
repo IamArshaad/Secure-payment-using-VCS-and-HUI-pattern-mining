@@ -1,0 +1,18 @@
+{% extends 'admin/a_index.html' %}
+{% block body %}
+
+<body>
+<form id="form1" name="form1" method="post" action="/Reply_post">
+    <input type="hidden" name="cid" value="{{ cid }}">
+  <table class="table table-bordered table-hover table-stripped">
+    <tr>
+      <td>
+      <input type="text" name="textfield" id="textfield"class="form-control" required/></td>
+    </tr>
+    <tr>
+      <td><input type="submit" name="button" id="button" value="Reply" class="btn btn-success"/></td>
+    </tr>
+  </table>
+</form>
+</body>
+{% endblock %}

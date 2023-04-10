@@ -1,0 +1,29 @@
+{% extends 'vendor/v_index.html' %}
+{% block body %}
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+
+<table class="table table-bordered table-hover table-stripped">
+    <tr style="color: white;background: #00670f">
+
+    <th>S.No</th>
+    <th>Product Name</th>
+    <th>Quantity</th>
+    <th>&nbsp;</th>
+    <th>&nbsp;</th>
+  </tr>
+    {% for i in data %}
+  <tr>
+    <td>{{ loop.index }}</td>
+    <td>{{ i['p_name'] }}</td>
+    <td>{{ i['quantity'] }}</td>
+    <td><a href="/EditStock/{{ i['s_id'] }}"class="btn btn-success">Edit</a></td>
+      <td><a href="/delete_stock/{{ i['s_id'] }}" class="btn btn-danger" onclick="return confirm('Do you want to delete?')">Delete</a></td>
+
+  </tr>
+    {% endfor %}
+</table>
+</form>
+</body>
+{% endblock %}

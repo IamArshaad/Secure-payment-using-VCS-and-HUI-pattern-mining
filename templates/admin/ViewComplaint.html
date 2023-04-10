@@ -1,0 +1,51 @@
+{% extends 'admin/a_index.html' %}
+{% block body %}
+
+<body>
+<form id="form1" name="form1" method="post" action="/ViewComplaint_post">
+  <table class="table table-bordered table-hover table-stripped">
+    <tr>
+      <th>From Date</th>
+      <td>
+      <input type="date" name="textfield" id="textfield"class="form-control" value="{{ date1 }}"/></td>
+      <th>ToDate</th>
+      <td>
+      <input type="date" name="textfield2" id="textfield2" class="form-control" value="{{ date2 }}" /></td>
+      <td><input type="submit" name="button" id="button" value="Search"class="btn btn-info" /></td>
+    </tr>
+  </table>
+  <p>&nbsp;</p>
+  <table class="table table-bordered table-hover table-stripped">
+      <tr style="color: white;background: #00670f">
+
+      <th>S.No</th>
+      <th>Date</th>
+      <th>Time</th>
+      <th>Title</th>
+      <th>Complaint</th>
+      <th>User Info</th>
+      <th>Reply</th>
+{#      <td>Status</td>#}
+    </tr>
+      {% for i in data %}
+    <tr>
+      <td>{{ loop.index }}</td>
+      <td>{{ i['c_date'] }}</td>
+      <td>{{ i['c_time']}}</td>
+      <td>{{ i['c_title'] }}</td>
+      <td>{{ i['c_description'] }}</td>
+      <td>{{ i['v_name'] }}<br>
+      {{ i['v_ownername'] }}<br>
+      {{ i['v_phone'] }}<br>
+      {{ i['v_email'] }}<br>
+      {{ i['v_place'] }}<br>
+      </td>
+      <td>{% if  i['c_status']=="pending" %}<a href="/Reply/{{ i['comp_id'] }}"class="btn btn-success">Reply</a>{% else %}{{ i['c_reply'] }}{% endif %}</td>
+{#      <td>{{ i['status'] }}</td>#}
+    </tr>
+      {% endfor %}
+  </table>
+  <p>&nbsp;</p>
+</form>
+</body>
+{% endblock %}
